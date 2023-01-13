@@ -14,17 +14,37 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 16
-          cache: yarn
 
-      - name: Install dependencies by yarn
-        run: yarn
+      - uses: pnpm/action-setup@v2 // 配置使用pnpm
+        name: Install pnpm
+        id: pnpm-install
+        with:
+          version: 7
+          run_install: false
+      
+      - name: Get pnpm store directory
+        id: pnpm-cache
+        shell: bash
+        run: |
+          echo "STORE_PATH=$(pnpm store path)" >> $GITHUB_OUTPUT
+
+      - uses: actions/cache@v3
+        name: Setup pnpm cache
+        with:
+          path: ${{ steps.pnpm-cache.outputs.STORE_PATH }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
+
+      - name: Install dependencies
+        run: pnpm install
 
       - name: Build docs
-        run: yarn run docs:build
+        run: pnpm -F docs build
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         with:
-          github_token: ${{ secrets.VITEPRESS }} // 配置在项目里的secrets
+          github_token: ${{ secrets.RAN_ACTIONS_TOKEN }} // 配置在项目里的secrets
           exclude_assets: ''
           publish_dir: docs/.vitepress/dist // 需要发布内容的路径

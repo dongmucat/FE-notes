@@ -1,0 +1,30 @@
+name: pages-build-site
+on: 
+  push:
+    branches: 
+      - main
+jobs:
+  deploy:
+    runs-on: ubuntu-latest 
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Install Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+          cache: yarn
+
+      - name: Install dependencies by yarn
+        run: yarn
+
+      - name: Build docs
+        run: yarn run docs:build
+
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.VITEPRESS }} // 配置在项目里的secrets
+          exclude_assets: ''
+          publish_dir: docs/.vitepress/dist // 需要发布内容的路径

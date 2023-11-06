@@ -297,3 +297,44 @@
 ### sticky
 
 `sticky`是粘性定位，可以说是相对定位`relative `和固定定位`fixed `的结合体，元素在跨越特定值之前被认为是相对定位，之后可以认为是固定定位，而且必须指定top、bottom、left、right4个值之一，否则只会处于相对定位
+
+## Grid布局
+
+> `Grid` 布局即网格布局，是一种新的 `CSS` 布局模型，比较擅长将一个页面划分为几个主要区域，以及定义这些区域的大小、位置、层次等关系。号称是最强大的的 `CSS` 布局方案，是目前唯一一种 `CSS` 二维布局。[掘金文章参考](https://juejin.cn/post/6854573220306255880)
+
+### 容器的属性
+
+#### display
+
+- grid:：grid布局，但是块级元素
+- inline-grid: grid布局，但是行内元素
+
+#### grid-template-columns和grid-template-rows
+
+> `grid-template-columns`用于设置列宽，`grid-template-rows`用于设置行高。还能自持`fr`单位
+
+```scss
+.wrapper {
+  display: grid;
+  /*  声明了三列，宽度分别为 200px 100px 200px */
+  grid-template-columns: 200px 100px 200px;
+  /*  声明了两行，行高分别为 50px 50px  */
+  grid-template-rows: 50px 50px;
+  /*  间距为5px */
+  grid-gap: 5px;
+}
+```
+
+- repeat() 函数：可以简化重复的值。该函数接受两个参数，第一个参数是重复的次数，第二个参数是所要重复的值。例如`grid-template-rows: repeat(2, 50px)`
+
+- auto-fill：表示自动填充，让一行（或者一列）中尽可能的容纳更多的单元格。`grid-template-columns: repeat(auto-fill, 200px)` 表示列宽是 `200 px`，但列的数量是不固定的，只要浏览器能够容纳得下，就可以放置元素
+- fr：`fr` 单位代表网格容器中可用空间的一等份。`grid-template-columns: 200px 1fr 4fr` 表示第一个列宽设置为`200px`，后面剩余的宽度分为两部分，宽度分别为剩余宽度的 `1/5` 和 `4/5`
+
+#### grid-gap
+
+> `grid-gap`包括了`grid-row-gap`和`grid-column-gap`，属性分别设置行间距和列间距
+
+- `grid-row-gap: 10px` 表示行间距是`10px`
+- `grid-column-gap: 30px` 表示列间距是`30px`
+- `grid-gap: 10px 30px` 实现的效果是一样的
+

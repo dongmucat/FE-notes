@@ -338,3 +338,97 @@
 - `grid-column-gap: 30px` 表示列间距是`30px`
 - `grid-gap: 10px 30px` 实现的效果是一样的
 
+#### grid-template-areas
+
+> `grid-template-areas` 属性用于定义区域，一个区域由一个或者多个单元格组成
+
+```scss
+.wrapper {
+  grid-template-areas:
+    ". header  header"
+    "sidebar content content";
+}
+
+.sidebar {
+  grid-area: sidebar;
+}
+
+.content {
+  grid-area: content;
+}
+
+.header {
+  grid-area: header;
+}
+
+```
+
+以上代码表示将类 `.sidebar` `.content` `.header`所在的元素放在上面 `grid-template-areas` 中定义的 `sidebar` `content` `header` 区域中
+
+![](http://songnian.gitee.io/imgs/imgs/areas.jpg)
+
+#### grid-auto-flow
+
+> `grid-auto-flow` 属性控制着自动布局算法怎样运作，精确指定在网格中被自动布局的元素怎样排列。
+
+- row（默认值）：先行后列填，先填满第一行，再开始放入第二行
+- column：先列后行
+- [ row | column ] || dense：dense表示尽量填满
+
+#### justify-items和align-items
+
+> `justify-items` 属性设置单元格内容的水平位置（左中右），`align-items` 属性设置单元格的垂直位置（上中下）
+
+```scss
+.container {
+  justify-items: start | end | center | stretch;
+  align-items: start | end | center | stretch;
+}
+```
+
+#### justify-content和align-content
+
+> `justify-content` 属性是整个内容区域在容器里面的水平位置（左中右），`align-content` 属性是整个内容区域的垂直位置（上中下）。它们都有如下的属性值
+
+```scss
+.container {
+  justify-content: start | end | center | stretch | space-around | space-between | space-evenly;
+  align-content: start | end | center | stretch | space-around | space-between | space-evenly;  
+}
+```
+
+#### grid-auto-columns和grid-auto-rows
+
+> **隐式和显式网格**：显式网格包含了你在 `grid-template-columns` 和 `grid-template-rows` 属性中定义的行和列。如果你在网格定义之外又放了一些东西，或者因为内容的数量而需要的更多网格轨道的时候，网格将会在隐式网格中创建行和列
+
+```scss
+.wrapper {
+  display: grid;
+  grid-template-columns: 200px 100px;
+/*  只设置了两行，但实际的数量会超出两行，超出的行高会以 grid-auto-rows 算 */
+  grid-template-rows: 100px 100px;
+  grid-gap: 10px 20px;
+  grid-auto-rows: 50px;
+}
+```
+
+### 项目的属性
+
+#### grid-area
+
+> `grid-area` 属性指定项目放在哪一个区域，在上面介绍 `grid-template-areas` 的时候有提到过，这里不再具体展开
+
+#### justify-self和align-self
+
+> `justify-self` 属性设置单元格内容的水平位置（左中右），跟 `justify-items` 属性的用法完全一致，但只作用于单个项目
+>
+> `align-self` 属性设置单元格内容的垂直位置（上中下），跟`align-items`属性的用法完全一致，也是只作用于单个项目
+
+#### grid-column-start 属性、grid-column-end 属性、grid-row-start 属性以及grid-row-end 属性
+
+> 可以指定网格项目所在的四个边框，分别定位在哪根网格线，从而指定项目的位置
+
+- grid-column-start 属性：左边框所在的垂直网格线
+- grid-column-end 属性：右边框所在的垂直网格线
+- grid-row-start 属性：上边框所在的水平网格线
+- grid-row-end 属性：下边框所在的水平网格线

@@ -2,7 +2,7 @@
  * @Description: vitepress config
  * @Author: Songnian Chen
  * @Date: 2023-01-12 17:48:59
- * @LastEditTime: 2023-11-07 09:22:59
+ * @LastEditTime: 2023-11-07 09:30:45
  * @LastEditors: Songnian Chen
  */
 
@@ -23,7 +23,7 @@ module.exports = {
 	],
 	themeConfig: {
 		siteTitle: "study-notes",
-		logo: "/favicon.ico",
+		logo: "logo.svg",
 		laslltUpdatedText: "最后更新",
 		socialLinks: [
 			{

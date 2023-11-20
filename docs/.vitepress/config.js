@@ -7,7 +7,7 @@
  */
 
 module.exports = {
-	base:'/FE-notes/',
+	base: "/FE-notes/",
 	title: "study-notes",
 	description: "frontend docs",
 	lastUpdated: true,
@@ -67,6 +67,10 @@ module.exports = {
 							text: "Recoil快速上手",
 							link: "/guide/Recoil快速上手",
 						},
+						{
+							text: "Zustand快速上手",
+							link: "/guide/Zustand快速上手",
+						},
 					],
 				},
 
@@ -98,13 +102,13 @@ module.exports = {
 						{ text: "web安全", link: "/guide/web安全" },
 					],
 				},
-                {
+				{
 					text: "leetcode",
 					collapsible: true,
 					items: [
 						{ text: "二叉树", link: "/guide/leetcode/二叉树" },
 						{ text: "回溯算法", link: "/guide/leetcode/回溯算法" },
-						{ text: "链表", link: "/guide/leetcode/链表" }
+						{ text: "链表", link: "/guide/leetcode/链表" },
 					],
 				},
 			],

@@ -118,7 +118,7 @@ const { count } = useCountStore();
 默认情况下，它检测严格相等的变化（`old === new` 即 `新值全等于旧值`）
 
 ```typescript
-const count = useCountStore( (state)=> state.count);
+const count = useCountStore((state)=> state.count);
 ```
 
 如果你想获取多个变量，假如多了一个`honey`变量，可以这么做👇：
@@ -266,5 +266,5 @@ export default useTodoStore;
 
 ## 结语
 
-以可以足够应付大多数应用了，更多详情请看[官网](https://awesomedevin.github.io/zustand-vue/docs/introduce/start/zustand)
+以上可以足够应付大多数应用了，更多详情请看[官网](https://awesomedevin.github.io/zustand-vue/docs/introduce/start/zustand)
 
